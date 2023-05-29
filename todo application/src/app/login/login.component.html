@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sign in</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" ></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+</head>
+<body>
+    <form  [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div class="continer">
+        <h2 align="center"> Login</h2>
+        <div class="form-group">
+        <small id="demo"></small>
+        <input type="username" placeholder="username" formControlName="username" id="username" required [ngClass]="{'is-invalid':submitted && f['username'].errors}" >
+        <div *ngif="submitted && f['username'].errors" class="invalid-feedback">
+        <div *ngif="f['username'].errors['required']">Username is required</div>
+        <div *ngif="f['username'].errors['minlength']">Username must be atleast 6 characters</div>
+        <div *ngif="f['username'].errors['maxlength']">Username must not exceed 20 characters</div>
+        </div>
+        </div>
+        &nbsp;&nbsp;
+        <div class="form-group">
+        <small id="demo1"></small>
+        <input type="password" placeholder="password" formControlName="pwd" id="pwd" [ngClass]="{'is-invalid':submitted && f['pwd'].errors}" required>
+        <div *ngif="submitted && f['pwd'].errors" class="invalid-feedback">
+          <div *ngif="f['pwd'].errors['required']">password is required</div>
+          <div *ngif="f['pwd'].errors['minlength']">password must be atleast 6 characters</div>
+          <div *ngif="f['pwd'].errors['maxlength']">password must not exceed 40 characters</div>
+          </div>
+          </div>
+        &nbsp;&nbsp;
+        <small id="demo2"></small>
+        <button  type="button" class="btn btn-primary button" (click)="onSubmit()" mat-raised-button>SignIn</button>
+        <p> or Sign Up with social platforms </p>
+        <div class="social">
+        <a href="https://WWW.facebook.com/"><i class="fa-brands fa-facebook" aria-hidden="true"></i></a>
+        <a href="https://WWW.twitter.com/"><i class="fa-brands fa-twitter" aria-hidden="true"></i></a>
+        <a href="https://www.dribbble.com"><i class="fa-brands fa-square-dribbble" aria-hidden="true"></i></a>
+        <a href="https://WWW.discord.com"><i class="fa-brands fa-discord" aria-hidden="true"></i></a>
+    </div>
+        <P>Don't have an account?<a routerLink="/signup">Sign up</a></P>&nbsp;
+    </div>
+</form>
+
+</body>
+</html>
+
+
